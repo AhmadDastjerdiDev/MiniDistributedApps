@@ -1,22 +1,24 @@
 import tcp.TCPMiniClient;
 import tcp.TCPMiniServer;
+import udp.UDPMiniClient;
+import udp.UDPMiniServer;
 
 void main(String[] args) throws Exception {
 
     if (args.length < 1) {
         System.out.println("Usage:");
-        System.out.println("  java Main server <port>");
-        System.out.println("  java Main client <host> <port>");
+        System.out.println("  java Main TCP_Server <port>");
+        System.out.println("  java Main TCP_Client <host> <port>");
+        System.out.println("  java Main UDP_Server <port>");
+        System.out.println("  java Main UDP_Client <address> <port> <message>");
         return;
     }
 
-    if (args[0].equals("server")) {
-        TCPMiniServer.run(new String[]{args[1]});
-
-    } else if (args[0].equals("client")) {
-        TCPMiniClient.run(new String[]{args[1], args[2]});
-
-    } else {
-        System.out.println("Unknown mode: " + args[0]);
+    switch (args[0]) {
+        case "TCP_Server" -> TCPMiniServer.run(new String[]{args[1]});
+        case "TCP_Client" -> TCPMiniClient.run(new String[]{args[1], args[2]});
+        case "UDP_Server" -> UDPMiniServer.run(new String[]{args[1]});
+        case "UDP_Client" -> UDPMiniClient.run(new String[]{args[1], args[2], args[3]});
+        default -> System.out.println("Unknown mode: " + args[0]);
     }
 }
