@@ -1,8 +1,10 @@
+package tcp;
+
 import java.io.*;
 import java.net.Socket;
 
 
-public class MiniClient {
+public class TCPMiniClient {
     public static void run(String[] args) throws IOException {
         String host = args[0];
         int port = Integer.parseInt(args[1]);
