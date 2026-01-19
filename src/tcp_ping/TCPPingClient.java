@@ -29,6 +29,8 @@ public class TCPPingClient {
             } catch (SocketTimeoutException e) {
                 System.out.println("Timeout: target failed");
                 break;
+            } finally {
+                socket.close();
             }
             Thread.sleep(1000);
         }
