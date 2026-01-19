@@ -4,6 +4,8 @@ import tcp_ping.TCPPingClient;
 import tcp_ping.TCPPingServer;
 import udp.UDPMiniClient;
 import udp.UDPMiniServer;
+import udp_ping.UDPPingClient;
+import udp_ping.UDPPingServer;
 
 void main(String[] args) throws Exception {
 
@@ -15,6 +17,8 @@ void main(String[] args) throws Exception {
         System.out.println("  java Main UDP_Client <address> <port> <message>");
         System.out.println("  java Main TCP_Ping_Server <port>");
         System.out.println("  java Main TCP_Ping_Client <host> <port> <timeout>");
+        System.out.println("  java Main UDP_Ping_Server <port>");
+        System.out.println("  java Main UDP_Ping_Client <host> <port> <timeout>");
         return;
     }
 
@@ -25,6 +29,8 @@ void main(String[] args) throws Exception {
         case "UDP_Client" -> UDPMiniClient.run(new String[]{args[1], args[2], args[3]});
         case "TCP_Ping_Server" -> TCPPingServer.run(new String[]{args[1]});
         case "TCP_Ping_Client" -> TCPPingClient.run(new String[]{args[1], args[2], args[3]});
+        case "UDP_Ping_Server" -> UDPPingServer.run(new String[]{args[1]});
+        case "UDP_Ping_Client" -> UDPPingClient.run(new String[]{args[1], args[2], args[3]});
         default -> System.out.println("Unknown mode: " + args[0]);
     }
 }
